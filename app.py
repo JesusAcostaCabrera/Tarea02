@@ -4,8 +4,8 @@ from flask_migrate import Migrate
 import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('HOST')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = os.getenv('TRACK')
+app.config[os.getenv('URI')] = os.getenv('HOST')
+app.config[os.getenv('MOD')] = os.getenv('TRACK')
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
