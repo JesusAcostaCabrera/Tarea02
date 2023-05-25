@@ -1,10 +1,11 @@
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:postgres@localhost:5433/cars_api"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('HOST')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = os.getenv('TRACK')
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
@@ -88,4 +89,4 @@ def handle_car(car_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
