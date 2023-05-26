@@ -87,6 +87,5 @@ def handle_car(car_id):
         
         return {"message": f"Car {car.name} successfully deleted."}
 
-default = os.getenv('PORT')
 if __name__ == '__main__':
-    app.run(port = default, debug=False)
+    app.run(port="2050",debug=False)
